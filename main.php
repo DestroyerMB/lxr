@@ -791,6 +791,8 @@ require_once "tasks.php";
 require_once "types.php";
 require_once "statuses.php";
 require_once "users.php";
+require_once "regions.php";
+require_once "properties.php";
 require_once "desktop.php";
 
 global $user_id;
