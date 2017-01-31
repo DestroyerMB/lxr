@@ -9,9 +9,15 @@
 	
 	print "<ul id=\"nav\">";
 	print "	<li><a href=\"index.php\">Summary</a></li>";
-    print "	<li><a href=\"\">Tasks</a>";
-    print "		<ul>";
-    if(HasPrivs($user_id,'new_task')) print "			<li id=\"task_add_menu\"><a href=\"#null\">Новая задача</a></li>";
+	print "	<li><a href=\"\">Ads</a>";
+	print "		<ul>";
+	if(HasPrivs($user_id,'new_ad')) print "			<li id=\"ad_add_menu\"><a href=\"#null\">New ad</a></li>";
+	if(HasPrivs($user_id,'ads_view')) print "			<li><a href=\"index.php?action=ads_view\">View ads</a></li>";
+	print "		</ul>";
+	print "	</li>";
+	print "	<li><a href=\"\">Tasks</a>";
+	print "		<ul>";
+	if(HasPrivs($user_id,'new_task')) print "			<li id=\"task_add_menu\"><a href=\"#null\">Новая задача</a></li>";
 	if(HasPrivs($user_id,'tasks_view')) print "			<li><a href=\"index.php?action=tasks_view_my\">Мои задачи</a></li>";
 	if(HasPrivs($user_id,'tasks_view')) print "			<li><a href=\"index.php?action=tasks_view\">Все задачи</a></li>";
 	/*if(HasPrivs($user_id,'zrcadlo_view')) 
