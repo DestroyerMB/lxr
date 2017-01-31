@@ -49,6 +49,17 @@
 		$sql="insert into ".$prefix."users(login,name,password) values('demo','demo',md5('demo'))";   
 		$result = mysql_query($sql) or die("Invalid query: " . mysql_error());
 		
+		//regions
+		$sql="CREATE TABLE IF NOT EXISTS `".$prefix."regions` (`id` INT(10) NOT NULL AUTO_INCREMENT,ord INT(10) NOT NULL DEFAULT 1,`name` VARCHAR(50) NULL DEFAULT NULL,PRIMARY KEY (`id`));";
+		$result = mysql_query($sql) or die("Invalid query: " . mysql_error());
+		
+		$sql="delete from ".$prefix."regions";   
+		$result = mysql_query($sql) or die("Invalid query: " . mysql_error());
+		$sql="insert into ".$prefix."regions(name) values('Luxembourg')";   
+		$result = mysql_query($sql) or die("Invalid query: " . mysql_error());
+		$sql="insert into ".$prefix."regions(name) values('Trier')";   
+		$result = mysql_query($sql) or die("Invalid query: " . mysql_error());
+		
 		//types
 		$sql="CREATE TABLE IF NOT EXISTS `".$prefix."types` (`id` INT(10) NOT NULL AUTO_INCREMENT,ord INT(10) NOT NULL DEFAULT 1,`name` VARCHAR(50) NULL DEFAULT NULL,PRIMARY KEY (`id`));";
 		$result = mysql_query($sql) or die("Invalid query: " . mysql_error());
@@ -67,14 +78,44 @@
 		$sql="insert into ".$prefix."statuses(name) values('confirmed')";   
 		$result = mysql_query($sql) or die("Invalid query: " . mysql_error());
 		
+		//options
+		$sql="CREATE TABLE IF NOT EXISTS `".$prefix."options` (`id` INT(10) NOT NULL AUTO_INCREMENT,ord INT(10) NOT NULL DEFAULT 1,`name` VARCHAR(50) NULL DEFAULT NULL,PRIMARY KEY (`id`));";
+		$result = mysql_query($sql) or die("Invalid query: " . mysql_error());
+		
+		$sql="delete from ".$prefix."options";   
+		$result = mysql_query($sql) or die("Invalid query: " . mysql_error());
+		$sql="insert into ".$prefix."options(name) values('Internet')"; 
+		$result = mysql_query($sql) or die("Invalid query: " . mysql_error());
+		$sql="insert into ".$prefix."options(name) values('Pets allowed')";   
+		$result = mysql_query($sql) or die("Invalid query: " . mysql_error());
+		
 		//tasks
-		id,type_id,status_id,user_id,task_date,subject,note
 		$sql="CREATE TABLE IF NOT EXISTS `".$prefix."tasks` (`id` INT(10) NOT NULL AUTO_INCREMENT,type_id INT(10) NULL DEFAULT NULL,status_id INT(10) NULL DEFAULT NULL,user_id INT(10) NULL DEFAULT NULL,task_date datetime NULL DEFAULT NULL,`subject` VARCHAR(255) NULL DEFAULT NULL,`note` VARCHAR(255) NULL DEFAULT NULL,PRIMARY KEY (`id`));";
 		$result = mysql_query($sql) or die("Invalid query: " . mysql_error());
 		
 		$sql="delete from ".$prefix."tasks";   
 		$result = mysql_query($sql) or die("Invalid query: " . mysql_error());
 		$sql="insert into ".$prefix."tasks(type_id,status_id,user_id,task_date,subject,note) values(1,1,1,now(),'Test task','Already done')";   
+		$result = mysql_query($sql) or die("Invalid query: " . mysql_error());
+		
+		//ads
+		$sql="CREATE TABLE IF NOT EXISTS `".$prefix."ads` (`id` INT(10) NOT NULL AUTO_INCREMENT,region_id INT(10) NULL DEFAULT NULL,type_id INT(10) NULL DEFAULT NULL,status_id INT(10) NULL DEFAULT NULL,user_id INT(10) NULL DEFAULT NULL,created datetime NULL DEFAULT NULL,`subject` VARCHAR(255) NULL DEFAULT NULL,`note` VARCHAR(255) NULL DEFAULT NULL,PRIMARY KEY (`id`));";
+		$result = mysql_query($sql) or die("Invalid query: " . mysql_error());
+		
+		$sql="delete from ".$prefix."ads";   
+		$result = mysql_query($sql) or die("Invalid query: " . mysql_error());
+		$sql="insert into ".$prefix."ads(region_id,type_id,status_id,user_id,created,subject,note) values(1,1,1,1,now(),'Nice apartments near Trier','No agencies and no comission!')";   
+		$result = mysql_query($sql) or die("Invalid query: " . mysql_error());
+		
+		//ads options
+		$sql="CREATE TABLE IF NOT EXISTS `".$prefix."ads_options` (`id` INT(10) NOT NULL AUTO_INCREMENT,ads_id INT(10) NOT NULL,options_id INT(10) NOT NULL,PRIMARY KEY (`id`));";
+		$result = mysql_query($sql) or die("Invalid query: " . mysql_error());
+		
+		$sql="delete from ".$prefix."ads_options";   
+		$result = mysql_query($sql) or die("Invalid query: " . mysql_error());
+		$sql="insert into ".$prefix."ads_options(ads_id,options_id) values(1,1)"; 
+		$result = mysql_query($sql) or die("Invalid query: " . mysql_error());
+		$sql="insert into ".$prefix."ads_options(ads_id,options_id) values(1,2)"; 
 		$result = mysql_query($sql) or die("Invalid query: " . mysql_error());
 		
 	}
