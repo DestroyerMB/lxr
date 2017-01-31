@@ -787,6 +787,7 @@
 require_once "env.php";
 require_once "main_menu.php";
 require_once "login.php";
+require_once "ads.php";
 require_once "tasks.php";
 require_once "types.php";
 require_once "statuses.php";
@@ -810,6 +811,9 @@ else if($action=='tasks_view') $section='Все задачи';
 else if($action=='types_view') $section='Типы задач';
 else if($action=='statuses_view') $section='Статусы задач';
 else if($action=='users_view') $section='Коллеги';
+else if($action=='ads_view') $section='Ads';
+else if($action=='regions_view') $section='Regions';
+else if($action=='properties_view') $section='Properties';
 
 ?>
 
@@ -982,6 +986,7 @@ else if($action=='users_view') $section='Коллеги';
 		else if($action=='regions_view') RegionsView(true);
 		else if($action=='properties_view') PropertiesView(true);
 		else if($action=='users_view') UsersView(true);
+		else if($action=='ads_view') AdsView(true);
 		else DesktopView(false);
 		
 		print "</div>";
