@@ -1,0 +1,7 @@
+<?
+	function DV()
+	{
+		print "OK";
+	}
+
+?>
