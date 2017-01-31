@@ -6,7 +6,7 @@
 		
 		if($with_menu)
 		{
-			print "<div class=\"top\" align=\"right\"><button id=\"type_add\">New</button><button id=\"type_edit\">Edit</button><button id=\"type_delete\">Delete</button></div>\n";
+			print "<div class=\"top\" align=\"right\"><button id=\"region_add\">New</button><button id=\"region_edit\">Edit</button><button id=\"region_delete\">Delete</button></div>\n";
 			print "<div id=\"content\">";
 			print "<div id=\"data_grid\">\n";
 		}
