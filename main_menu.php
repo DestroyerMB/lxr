@@ -8,8 +8,8 @@
 	global $user_id;//=htmlspecialchars(stripslashes(substr($_REQUEST[user_id],0,10)));
 	
 	print "<ul id=\"nav\">";
-	print "	<li><a href=\"index.php\">Сводка</a></li>";
-    print "	<li><a href=\"\">Задачи</a>";
+	print "	<li><a href=\"index.php\">Summary</a></li>";
+    print "	<li><a href=\"\">Tasks</a>";
     print "		<ul>";
     if(HasPrivs($user_id,'new_task')) print "			<li id=\"task_add_menu\"><a href=\"#null\">Новая задача</a></li>";
 	if(HasPrivs($user_id,'tasks_view')) print "			<li><a href=\"index.php?action=tasks_view_my\">Мои задачи</a></li>";
@@ -25,13 +25,15 @@
 	}*/
 	print "		</ul>";
 	print "	</li>";
-	if(HasPrivs($user_id,'users_view')) print "	<li><a href=\"index.php?action=users_view\">Коллеги</a></li>";
-	print "			<li><a href=\"#null\">Справочники</a>";
+	if(HasPrivs($user_id,'users_view')) print "	<li><a href=\"index.php?action=users_view\">Users</a></li>";
+	print "			<li><a href=\"#null\">Dictionaries</a>";
 	print "				<ul>";
 	//print "					<li><a href=\"#null\">Контакты</a></li>";
 	//print "					<li><a href=\"#null\">Проекты</a></li>";
-	print "					<li><a href=\"index.php?action=types_view\">Типы задач</a></li>";
-	print "					<li><a href=\"index.php?action=statuses_view\">Статусы задач</a></li>";
+	print "					<li><a href=\"index.php?action=regions_view\">Regions</a></li>";
+	print "					<li><a href=\"index.php?action=types_view\">Ads types</a></li>";
+	print "					<li><a href=\"index.php?action=statuses_view\">Ads statuses</a></li>";
+	print "					<li><a href=\"index.php?action=properties_view\">Ads properties</a></li>";
 	print "				</ul>";
 	print "			</li>";
 	print "	<li><a href=\"\">Сервис</a><ul>";
