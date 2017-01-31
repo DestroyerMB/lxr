@@ -977,6 +977,8 @@ else if($action=='users_view') $section='Коллеги';
 		else if($action=='tasks_view') TasksView(true,false);
 		else if($action=='types_view') TypesView(true);
 		else if($action=='statuses_view') StatusesView(true);
+		else if($action=='regions_view') RegionsView(true);
+		else if($action=='properties_view') PropertiesView(true);
 		else if($action=='users_view') UsersView(true);
 		else DesktopView(false);
 		
