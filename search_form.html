@@ -12,7 +12,7 @@
 
 <script>
 function clickButton() {
-    var obj, s
+    var obj, s;
     obj = { "name":"Vasya", "age":10 };
     s = document.createElement("script");
     s.src = "search.php?callback=myFunc&data=" + JSON.stringify(obj);
@@ -20,8 +20,9 @@ function clickButton() {
 }
 function myFunc(myObj) {
     var x, txt = "";
-    for (x in myObj) {
-        txt += myObj[x] + "<br>";
+    for (i in myObj) {
+      var record = JSON.parse(myObj[i]);
+        txt += record.name + " " + record.city + "<br>";
     }
     document.getElementById("demo").innerHTML = txt;
 }

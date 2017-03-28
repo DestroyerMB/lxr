@@ -10,7 +10,16 @@ $outp = $result->fetch_all(MYSQLI_ASSOC);
 
 echo "myFunc(".json_encode($outp).")";*/
 
-$myJSON = '{ "name":"'.$data->name.'", "age":30, "city":"New York" }';
+/*$myJSON = '{ "name":"'.$data->name.'", "age":30, "city":"New York" }';
 
-echo "(".$myJSON.");";
+echo "(".$myJSON.");";*/
+
+$rs = array();
+$row = "{ \"name\":\"".$data->name."\", \"age\":30, \"city\":\"New York\" }";
+array_push($rs,$row);
+$row2 = '{ "name":"yyy", "age":37, "city":"Chicago" }';
+array_push($rs,$row2);
+
+echo "myFunc(".json_encode($rs).")";
+
 ?>
