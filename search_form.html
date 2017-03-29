@@ -6,23 +6,31 @@
 <h2>Request With a Callback Function</h2>
 <p>The PHP file returns a call to the function you send as a callback.</p>
 
-<button onclick="clickButton()">Click me!</button>
+<select id="test">
+  <option value="1">Room</option>
+  <option value="2" selected="selected">Apartments</option>
+  <option value="3">House</option>
+</select>
+
+<button onclick="clickButton()">Find</button>
 
 <p id="demo"></p>
 
 <script>
 function clickButton() {
-    var obj, s;
-    obj = { "name":"Vasya", "age":10 };
-    s = document.createElement("script");
-    s.src = "search.php?callback=myFunc&data=" + JSON.stringify(obj);
+    var selects = document.getElementById("test");
+    var selectedValue = selects.options[selects.selectedIndex].value;
+    var selectedText = selects.options[selects.selectedIndex].text;
+    var obj = { "id":selectedValue, "name":selectedText };
+    var s = document.createElement("script");
+    s.src = "search.php?callback=displayAds&data=" + JSON.stringify(obj);
     document.body.appendChild(s);
 }
-function myFunc(myObj) {
+function displayAds(rs) {
     var x, txt = "";
-    for (i in myObj) {
-      var record = JSON.parse(myObj[i]);
-        txt += record.name + " " + record.city + "<br>";
+    for (i in rs) {
+      var record = JSON.parse(rs[i]);
+        txt += record.name + " in " + record.city + " for " + record.price + "<br>";
     }
     document.getElementById("demo").innerHTML = txt;
 }
