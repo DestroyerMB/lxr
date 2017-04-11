@@ -1,7 +1,6 @@
 <?php
 header("Content-Type: application/json; charset=UTF-8");
-$callback = $_GET["callback"];
-$data = json_decode($_GET["data"], false);
+$data = json_decode(file_get_contents('php://input'));
 
 $rs = array();
 if($data->id == 1)
@@ -23,6 +22,6 @@ elseif($data->id == 3)
 array_push($rs,$row1);
 array_push($rs,$row2);
 
-echo $callback."(".json_encode($rs).")";
+echo json_encode($rs);
 
 ?>

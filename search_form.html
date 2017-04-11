@@ -12,21 +12,31 @@
   <option value="3">House</option>
 </select>
 
-<button onclick="clickButton()">Find</button>
+<button onclick="findResults('search.php', displayResults)">Find</button>
 
 <p id="demo"></p>
 
 <script>
-function clickButton() {
+function findResults(url, cFunction) {
     var selects = document.getElementById("test");
     var selectedValue = selects.options[selects.selectedIndex].value;
     var selectedText = selects.options[selects.selectedIndex].text;
     var obj = { "id":selectedValue, "name":selectedText };
-    var s = document.createElement("script");
-    s.src = "search.php?callback=displayAds&data=" + JSON.stringify(obj);
-    document.body.appendChild(s);
+
+    var xhttp;
+    xhttp=new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        cFunction(this.responseText);
+      }
+    };
+    xhttp.open("POST", url, true);
+    xhttp.setRequestHeader("Content-Type", "application/json");
+    xhttp.send(JSON.stringify(obj));
 }
-function displayAds(rs) {
+
+function displayResults(responseText) {
+    var rs =  JSON.parse(responseText);
     var x, txt = "";
     for (i in rs) {
       var record = JSON.parse(rs[i]);
