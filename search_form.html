@@ -39,10 +39,17 @@ function displayResults(responseText) {
     var rs =  JSON.parse(responseText);
     var x, txt = "";
     for (i in rs) {
-      var record = JSON.parse(rs[i]);
-        txt += record.name + " in " + record.city + " for " + record.price + "<br>";
+    var shielded = rs[i].replace('\r','\\r').replace('\n','\\n').replace(/[\u0000-\u0019]+/g,"");
+      var record = JSON.parse(shielded);
+      for (var property in record) {
+        if (record.hasOwnProperty(property)) {
+          var s = '' + record[property];
+          record[property] = s.replace('\\r','\r').replace('\\n','\n');
+        }
+      }
+      txt += record.name + " in " + record.city + " for " + record.price + "<br>";
     }
-    document.getElementById("demo").innerHTML = txt;
+    document.getElementById("demo").innerHTML = '<pre>'+txt+'</pre>';
 }
 </script>
 
