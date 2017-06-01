@@ -1,9 +1,7 @@
 <html>
 <head>
-<title>Google Maps API v3 Example : Geocoding Simple</title>
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyBOcOOHnZXo1mFVAmeyg2CFX1gjQ7UtjVQ"></script>
-<script type="text/javascript">
-</script>
+  <title>Google Maps API v3 Example : Geocoding Simple</title>
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?libraries=places&key=AIzaSyBOcOOHnZXo1mFVAmeyg2CFX1gjQ7UtjVQ"></script>
 </head>
 <body onload="initialize()">
 <div align="center" style="height: 30px; width: 530px">
@@ -25,6 +23,14 @@ function initialize()
       center: new google.maps.LatLng(22.7964,79.5410),
       mapTypeId: google.maps.MapTypeId.ROADMAP
   });
+
+  var input = document.getElementById('address');
+  var options = {
+      componentRestrictions: {
+          country: 'lu'
+      }
+  };
+  var autocomplete = new google.maps.places.Autocomplete(input, options);
 }
 
 function codeAddress()
