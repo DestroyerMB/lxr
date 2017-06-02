@@ -60,7 +60,9 @@ function initialize() {
       for (var i = 0; i < points.length; i++) {
         ;;console.log(points[i].lat(),points[i].lng());
       }
-      //$('#vertices').val(event.overlay.getPath().getArray());
+      //SELECT *, AsText(location) FROM stuff  WHERE Contains(
+      //GeomFromText('POLYGON((41.000497 -109.050149, 41.002380 -102.051881))'), location );
+      
   });
 }
 
