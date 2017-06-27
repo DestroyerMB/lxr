@@ -40,6 +40,12 @@ function codeAddress()
   {
       if (status == google.maps.GeocoderStatus.OK)
       {
+        var components = results[0].address_components;
+        for (var i = 0; i < components.length; i++) {
+          if(components[i].types[0]=="administrative_area_level_1") {
+            ;;console.log(components[i].long_name);
+          }
+        }
           map.setCenter(results[0].geometry.location);
           var marker = new google.maps.Marker(
           {
