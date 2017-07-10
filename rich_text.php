@@ -17,10 +17,14 @@
 <body>
   <textarea>Next, get a free TinyMCE Cloud API key!</textarea>
   <button type="button" name="button" onClick="showText()">Show text</button>
+  <button type="button" name="button" onClick="setText()">Set text</button>
   <script type="text/javascript">
     function showText() {
       var txt = tinymce.activeEditor.getContent();
       console.log(txt);
+    }
+    function setText() {
+      tinymce.activeEditor.setContent('zzz');
     }
   </script>
 </body>
