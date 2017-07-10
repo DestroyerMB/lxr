@@ -12,11 +12,14 @@ module.exports = {
       { test: /\.txt$/, use: 'raw-loader' }
     ]
   },
-  externals: {
+  /*externals: {
     jquery: 'jQuery'
-  },
+  },*/
   plugins: [
-
-  ]/*,
-  watch: true*/
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery"
+        })
+    ],
+  watch: true
 };
