@@ -15,15 +15,20 @@ window.fbAsyncInit = function() {
     version          : 'v2.9'
   });
   FB.Event.subscribe('auth.statusChange', getFBUser);
+  FB.Event.subscribe('edge.create', function(response) {
+    // like clicked
+    alert(response);
+    console.log('like');
+  });
 };
 
-(function(d, s, id){
-   var js, fjs = d.getElementsByTagName(s)[0];
-   if (d.getElementById(id)) {return;}
-   js = d.createElement(s); js.id = id;
-   js.src = "//connect.facebook.net/en_US/sdk.js";
-   fjs.parentNode.insertBefore(js, fjs);
- }(document, 'script', 'facebook-jssdk'));
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9&appId=344827722600977";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
 
 
   function getFBUser(response) {
@@ -32,8 +37,8 @@ window.fbAsyncInit = function() {
       }
 
      FB.api('/me', function(response) {
-      alert("Name: "+ response.name + "\nFirst name: "+ response.first_name + "ID: "+response.id);
-      var img_link = "http://graph.facebook.com/"+response.id+"/picture"
+      console.log(response);
+      //var img_link = "http://graph.facebook.com/"+response.id+"/picture"
     });
   }
 
@@ -50,6 +55,14 @@ data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="true
 renderLoginButton();
 </script>
 
+<!-- Your like button code -->
+<div class="fb-like"
+  data-href="<? echo 'http://'. $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']; ?>"
+  data-layout="button_count"
+  data-action="like"
+  data-share="true"
+  data-show-faces="false">
+</div>
 
   </body>
 </html>
