@@ -6,6 +6,8 @@
   </head>
   <body>
     <script>
+
+if (navigator.onLine) {
   window.fbAsyncInit = function() {
     FB.init({
       appId            : '344827722600977',
@@ -39,12 +41,26 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 
-function getFBUser() {
-   FB.api('/me', function(response) {
-    alert("Name: "+ response.name + "\nFirst name: "+ response.first_name + "ID: "+response.id);
-    var img_link = "http://graph.facebook.com/"+response.id+"/picture"
-  });
-}
+   function getFBUser() {
+     FB.api('/me', function(response) {
+      showUser(response);
+    });
+   }
+
+ }
+ else {
+   var fake_response = {};
+   fake_response.id=0;
+   fake_response.name='test';
+   showUser(fake_response);
+ }
+
+ function showUser(response) {
+   alert("Name: "+ response.name + "\nID: "+response.id);
+  }
+
+console.log('Bottom function');
+
 </script>
 
   </body>
