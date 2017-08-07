@@ -22,7 +22,8 @@ module.exports = {
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery",
-            wmark: "./watermark.js"//,
+            wmark: "./watermark.js"
+            // gmap: "./gmap.js",
             // maps:"http://maps.google.com/maps/api/js?key=AIzaSyBOcOOHnZXo1mFVAmeyg2CFX1gjQ7UtjVQ"
         })
     ],
